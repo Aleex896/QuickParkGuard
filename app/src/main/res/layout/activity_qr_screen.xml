@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:background="@color/negro"
+android:layout_width="match_parent"
+android:orientation="vertical"
+android:layout_height="match_parent">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentStart="true">
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="26dp"
+        android:layout_above="@+id/cameraView2"
+        android:layout_alignStart="@+id/cameraView2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escanea el Qr de la plaza"
+        android:textColor="@color/blanco"
+        android:textSize="25dp"
+        android:layout_marginTop="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/cameraView2"
+        android:layout_marginEnd="12dp" />
+
+    <SurfaceView
+        android:id="@+id/cameraView2"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/negro"
+    tools:context="com.example.alex.quickparkguard.MainActivity">
+
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/qps"
+    android:id="@+id/imageView"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/eTUsuario"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="Usuario"
+        android:nextFocusDown="@+id/eTUsuario"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textAlignment="center"
+        android:layout_above="@+id/button"
+        android:maxLines="1"
+        android:layout_alignStart="@+id/button"
+        android:layout_marginBottom="84dp" />
+    <EditText
+        android:id="@+id/eTPass"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:maxLines="1"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:textAlignment="center"
+        android:layout_above="@+id/button"
+        android:inputType="textPassword"
+        android:layout_alignStart="@+id/eTUsuario"
+        android:layout_marginBottom="31dp" />
+
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@color/azul"
+        android:textColor="@color/blanco"
+        android:text="Iniciar Sesión"
+        android:textSize="17dp"
+        android:textAllCaps="false"
+        android:layout_marginBottom="44dp"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button" />
+
+
+
+
+</RelativeLayout>

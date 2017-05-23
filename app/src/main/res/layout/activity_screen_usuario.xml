@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/negro"
+    tools:context="com.example.alex.quickparkguard.ScreenVigilancia">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vigilante: "
+        android:textSize="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/azul"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/tVVigilante" />
+
+    <TextView
+        android:id="@+id/nombrevigi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blanco"
+        android:text="nombre"
+        android:textSize="25dp"
+        android:layout_alignBaseline="@+id/tVVigilante"
+        android:layout_alignBottom="@+id/tVVigilante"
+        android:layout_toEndOf="@+id/tVVigilante" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tVClock"
+        android:textSize="30dp"
+        android:textColor="@color/blanco"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/tVDate"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blanco"
+        android:id="@+id/tVDate"
+        android:textSize="30dp"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/nombrevigi"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/bIniciarLector"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Iniciar Lector QR"
+        android:textColor="@color/blanco"
+        android:background="@color/azul"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/tVClock"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blanco"
+        android:background="@color/azul"
+        android:text="Reset"
+        android:id="@+id/breset"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp" />
+
+    <RelativeLayout
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/azul"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/relativeLayout"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/bIniciarLector"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plaza:"
+            android:textColor="@color/negronegro"
+            android:textSize="25dp"
+            android:id="@+id/textView2"
+            android:layout_alignBaseline="@+id/textoqr"
+            android:layout_alignBottom="@+id/textoqr"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp" />
+        <TextView
+            android:id="@+id/textoqr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="textoqr"
+            android:textSize="25dp"
+            android:textColor="@color/blanco"
+            android:layout_marginTop="19dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textView2"
+            android:layout_marginStart="11dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/negronegro"
+            android:text="Matricula del Vehiculo:"
+            android:textSize="20dp"
+            android:layout_below="@+id/textView2"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_marginTop="18dp"
+            android:id="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/matricula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:textColor="@color/blanco"
+            android:textSize="25dp"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_toEndOf="@+id/textView3"
+            android:layout_marginStart="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puede aparcar hasta"
+            android:textColor="@color/negronegro"
+            android:textSize="25dp"
+            android:layout_marginTop="13dp"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/blanco"
+            android:textSize="25dp"
+            android:text="11:30 test"
+            android:id="@+id/tVtiempolimite"
+            android:layout_alignBaseline="@+id/fechausuario"
+            android:layout_alignBottom="@+id/fechausuario"
+            android:layout_alignStart="@+id/matricula" />
+        <TextView
+            android:id="@+id/fechausuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fechatest"
+            android:textColor="@color/blanco"
+            android:textSize="25dp"
+            android:layout_marginBottom="11dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/textView3" />
+
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estacionamiento Correcto ✓"
+        android:textColor="@color/verde"
+        android:visibility="invisible"
+        android:id="@+id/tVOK"
+        android:layout_below="@+id/breset"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp" />
+
+    <TextView
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/rojo"
+        android:text="Estacionamiento no correcto, Multar ✘"
+        android:id="@+id/tVNoOK"
+        android:layout_alignBaseline="@+id/tVOK"
+        android:layout_alignBottom="@+id/tVOK"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
