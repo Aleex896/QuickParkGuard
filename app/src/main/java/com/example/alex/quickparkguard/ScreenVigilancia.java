@@ -1,9 +1,13 @@
 package com.example.alex.quickparkguard;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -13,12 +17,14 @@ import android.widget.TextView;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.text.TextRecognizer;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class ScreenVigilancia extends AppCompatActivity {
+public class ScreenVigilancia extends AppCompatActivity implements Serializable{
 
     private String usuario;
     public static final int REQUEST_CODE = 1;
+    public static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
 
     public static TextView texto;
     public static TextView nusuario;
@@ -36,7 +42,7 @@ public class ScreenVigilancia extends AppCompatActivity {
 
     public static TextView tvfecha;
 
-    public static Button btreset;
+    public static Button btreset,inilector,blistado;
 
     TextView clock;
     TextView fecha;
@@ -45,6 +51,33 @@ public class ScreenVigilancia extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_usuario);
+
+
+        if (ContextCompat.checkSelfPermission(ScreenVigilancia.this,
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+// Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(ScreenVigilancia.this,
+                    Manifest.permission.CAMERA)) {
+
+// Show an explanation to the user *asynchronously* -- don't block
+// this thread waiting for the user's response! After the user
+// sees the explanation, try again to request the permission.
+
+            } else {
+
+// No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(ScreenVigilancia.this,
+                        new String[]{Manifest.permission.CAMERA},
+                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+// MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+// app-defined int constant. The callback method gets the
+// result of the request.
+            }
+        }
 
         clock = (TextView) findViewById(R.id.tVClock);
         fecha = (TextView) findViewById(R.id.tVDate);
@@ -68,7 +101,8 @@ public class ScreenVigilancia extends AppCompatActivity {
         tVtiempolimite = (TextView) findViewById(R.id.tVtiempolimite);
 
 
-        Button inilector = (Button) findViewById(R.id.bIniciarLector);
+        inilector = (Button) findViewById(R.id.bIniciarLector);
+        blistado = (Button)findViewById(R.id.bListado);
         texto = (TextView) findViewById(R.id.textoqr);
 
         detector = new TextRecognizer.Builder(this).build();
@@ -88,9 +122,20 @@ public class ScreenVigilancia extends AppCompatActivity {
             }
         });
 
+        blistado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent golistado = new Intent(ScreenVigilancia.this,ListadoActivity.class);
+                golistado.putExtra("user",usuario);
+                startActivity(golistado);
+            }
+        });
+
         btreset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                blistado.setVisibility(View.VISIBLE);
+                inilector.setVisibility(View.VISIBLE);
                 relativeLayout.setVisibility(View.INVISIBLE);
                 tvnok.setVisibility(View.INVISIBLE);
                 tvok.setVisibility(View.INVISIBLE);
@@ -133,6 +178,8 @@ public class ScreenVigilancia extends AppCompatActivity {
         if(requestCode == REQUEST_CODE && resultCode == RESULT_OK)
             if (data != null) {
                 final Barcode barcode = data.getParcelableExtra("barcode");
+                blistado.setVisibility(View.INVISIBLE);
+                inilector.setVisibility(View.INVISIBLE);
                 textoqr = barcode.displayValue;
                 idPlaza = textoqr.substring(0,15);
                 texto.setText(idPlaza);

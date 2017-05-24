@@ -59,6 +59,16 @@
         android:layout_marginTop="19dp"
         android:layout_below="@+id/tVClock"
         android:layout_centerHorizontal="true" />
+    <Button
+        android:id="@+id/bListado"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Listado QR"
+        android:textColor="@color/blanco"
+        android:background="@color/azul"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/bIniciarLector"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
