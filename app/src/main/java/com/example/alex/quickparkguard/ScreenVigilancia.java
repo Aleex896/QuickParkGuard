@@ -79,31 +79,39 @@ public class ScreenVigilancia extends AppCompatActivity implements Serializable{
             }
         }
 
-        clock = (TextView) findViewById(R.id.tVClock);
-        fecha = (TextView) findViewById(R.id.tVDate);
-
-        tvfecha = (TextView) findViewById(R.id.fechausuario);
-
-        tvnok = (TextView) findViewById(R.id.tVNoOK);
-        tvok = (TextView) findViewById(R.id.tVOK);
-
-        relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
-
-        btreset = (Button) findViewById(R.id.breset);
-        btreset.setVisibility(View.INVISIBLE);
-
-
         usuario = getIntent().getStringExtra("user");
 
+        clock = (TextView) findViewById(R.id.tVClock);
+        fecha = (TextView) findViewById(R.id.tVDate);
+        tvfecha = (TextView) findViewById(R.id.fechausuario);
+        tvnok = (TextView) findViewById(R.id.tVNoOK);
+        tvok = (TextView) findViewById(R.id.tVOK);
         nusuario = (TextView) findViewById(R.id.nombrevigi);
         titulovigi = (TextView) findViewById(R.id.tVVigilante);
         matricula = (TextView) findViewById(R.id.matricula);
         tVtiempolimite = (TextView) findViewById(R.id.tVtiempolimite);
+        texto = (TextView) findViewById(R.id.textoqr);
 
+        relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
 
+        btreset = (Button) findViewById(R.id.breset);
         inilector = (Button) findViewById(R.id.bIniciarLector);
         blistado = (Button)findViewById(R.id.bListado);
-        texto = (TextView) findViewById(R.id.textoqr);
+
+
+        btreset.setVisibility(View.INVISIBLE);
+
+        nusuario.setText(usuario);
+
+        inilector.setTypeface(myFont(this));
+        nusuario.setTypeface(myFont(this));
+        titulovigi.setTypeface(myFont(this));
+        btreset.setTypeface(myFont(this));
+        blistado.setTypeface(myFont(this));
+        tVtiempolimite.setTypeface(myFont(this));
+        tvfecha.setTypeface(myFont(this));
+        tvok.setTypeface(myFont(this));
+        tvnok.setTypeface(myFont(this));
 
         detector = new TextRecognizer.Builder(this).build();
 
@@ -117,6 +125,7 @@ public class ScreenVigilancia extends AppCompatActivity implements Serializable{
 
                 }
                 Intent intent = new Intent(ScreenVigilancia.this, ScanActivity.class);
+                intent.putExtra("user", usuario);
                 startActivityForResult(intent, REQUEST_CODE);
 
             }
@@ -143,10 +152,7 @@ public class ScreenVigilancia extends AppCompatActivity implements Serializable{
             }
         });
 
-        nusuario.setText(usuario);
-        inilector.setTypeface(myFont(this));
-        nusuario.setTypeface(myFont(this));
-        titulovigi.setTypeface(myFont(this));
+
 
         Thread t = new Thread() {
             @Override

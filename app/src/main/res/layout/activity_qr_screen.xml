@@ -14,10 +14,11 @@ android:layout_height="match_parent">
     android:layout_alignParentTop="true"
     android:layout_alignParentStart="true">
 
-    <Button
+    <ImageButton
         android:id="@+id/button2"
         android:layout_width="80px"
         android:layout_height="80px"
+        android:background="@drawable/flecha_izquierda"
         tools:layout_editor_absoluteX="37dp"
         tools:layout_editor_absoluteY="26dp"
         android:layout_above="@+id/cameraView2"
@@ -30,9 +31,10 @@ android:layout_height="match_parent">
         android:text="Escanea el Qr de la plaza"
         android:textColor="@color/blanco"
         android:textSize="25dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="28dp"
         android:layout_alignParentTop="true"
         android:layout_alignEnd="@+id/cameraView2"
+
         android:layout_marginEnd="12dp" />
 
     <SurfaceView

@@ -85,7 +85,7 @@
                     android:textColor="@color/blanco"
                     android:text="Matricula"/>
                 <TextView
-                    android:id="@+id/trColor"
+                    android:id="@+id/trtiempo"
                     android:textAlignment="center"
                     android:layout_gravity="center_vertical"
                     android:textSize="20dp"

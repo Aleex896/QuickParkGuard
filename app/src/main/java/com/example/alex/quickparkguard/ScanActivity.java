@@ -10,6 +10,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
@@ -24,22 +26,27 @@ import java.io.IOException;
  */
 
 public class ScanActivity extends AppCompatActivity {
+    String usuario;
     SurfaceView cameraView;
     BarcodeDetector barcode;
     CameraSource cameraSource;
     SurfaceHolder holder;
+    TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr_screen);
 
-        Button flecha = (Button) findViewById(R.id.button2);
+        ImageButton flecha = (ImageButton) findViewById(R.id.button2);
+        title = (TextView)findViewById(R.id.textView);
+        usuario = getIntent().getStringExtra("user");
 
         flecha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent gomaps = new Intent(ScanActivity.this, ScreenVigilancia.class);
+                gomaps.putExtra("user", usuario);
                 startActivity(gomaps);
                 finish();
                 overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);

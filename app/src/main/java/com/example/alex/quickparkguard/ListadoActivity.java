@@ -32,8 +32,8 @@ public class ListadoActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
     Button lector,btact;
     TextView nusuario;
-    TextView clock;
-    TextView fecha;
+    TextView clock,time,matricula;
+    TextView fecha,vigilante;
     String usuario,textoqr;
     public static String pob,zona;
     Context context;
@@ -47,11 +47,27 @@ public class ListadoActivity extends AppCompatActivity {
 
         clock = (TextView) findViewById(R.id.tVClock);
         fecha = (TextView) findViewById(R.id.tVDate);
-
+        nusuario = (TextView) findViewById(R.id.nombrevigi);
+        vigilante =(TextView)findViewById(R.id.tVVigilante);
+        lector = (Button)findViewById(R.id.bIniciarLector);
         llListado = (ScrollView)findViewById(R.id.svlistado);
         table = (TableLayout)findViewById(R.id.tablelayout);
-
         btact = (Button)findViewById(R.id.breset);
+        time = (TextView)findViewById(R.id.trtiempo);
+        matricula = (TextView)findViewById(R.id.trMatricula);
+
+        btact.setTypeface(myFont(this));
+        lector.setTypeface(myFont(this));
+        nusuario.setTypeface(myFont(this));
+        vigilante.setTypeface(myFont(this));
+        time.setTypeface(myFont(this));
+
+        usuario = getIntent().getStringExtra("user");
+
+        nusuario.setText(usuario);
+
+        detector = new TextRecognizer.Builder(this).build();
+
         btact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,12 +114,6 @@ public class ListadoActivity extends AppCompatActivity {
             }
         }
 
-        usuario = getIntent().getStringExtra("user");
-
-        nusuario = (TextView) findViewById(R.id.nombrevigi);
-        nusuario.setText(usuario);
-        lector = (Button)findViewById(R.id.bIniciarLector);
-
 
         lector.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +125,7 @@ public class ListadoActivity extends AppCompatActivity {
                     ex.printStackTrace();
                 }
                 Intent intent = new Intent(ListadoActivity.this, ScanActivity.class);
+                intent.putExtra("user",usuario);
                 startActivityForResult(intent, REQUEST_CODE);
             }
         });
