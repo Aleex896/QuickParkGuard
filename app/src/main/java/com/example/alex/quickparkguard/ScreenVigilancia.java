@@ -44,6 +44,7 @@ public class ScreenVigilancia extends AppCompatActivity implements Serializable{
 
     public static Button btreset,inilector,blistado;
 
+    private TextView puede,plaza,idpla,matr;
     TextView clock;
     TextView fecha;
 
@@ -91,6 +92,10 @@ public class ScreenVigilancia extends AppCompatActivity implements Serializable{
         matricula = (TextView) findViewById(R.id.matricula);
         tVtiempolimite = (TextView) findViewById(R.id.tVtiempolimite);
         texto = (TextView) findViewById(R.id.textoqr);
+        puede = (TextView) findViewById(R.id.textView4);
+        matr =(TextView)findViewById(R.id.matricula);
+        plaza = (TextView)findViewById(R.id.textView3);
+        idpla = (TextView)findViewById(R.id.textView2);
 
         relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
 
@@ -112,6 +117,11 @@ public class ScreenVigilancia extends AppCompatActivity implements Serializable{
         tvfecha.setTypeface(myFont(this));
         tvok.setTypeface(myFont(this));
         tvnok.setTypeface(myFont(this));
+        puede.setTypeface(myFont(this));
+        matr.setTypeface(myFont(this));
+        texto.setTypeface(myFont(this));
+        plaza.setTypeface(myFont(this));
+        idpla.setTypeface(myFont(this));
 
         detector = new TextRecognizer.Builder(this).build();
 
